@@ -30,3 +30,8 @@ interface RegisteredUser extends BasedUser {
 }
 
 type User = Guest | RegisteredUser;
+
+function addBook(books: Book[], newBook: Book): Book[] {
+    books.push(newBook);
+    return books;
+}
