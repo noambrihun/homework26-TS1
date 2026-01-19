@@ -43,7 +43,7 @@ enum Genre {
     author: "J.D. Salinger",
     publicationYear: 1951,
     isAvailable: true,
-    genre: Genre.Fiction
+    genre: Genre.Fiction 
   });
 
   console.log(books);
@@ -92,4 +92,22 @@ function displayUserInfo(user:User):void{
   displayUserInfo(guestUser);
   displayUserInfo(registeredUser);
   
-  
+function updateUserProfile(user:User,updaeProfile:{profile:string}):User{
+
+  if("guestSessionId" in user){
+    return { ...user, ...updaeProfile };
+  }
+  return user
+}
+
+const updatedRegisteredUser = updateUserProfile(registeredUser, {
+  profile: "Senior Full Stack Developer"
+});
+
+console.log(updatedRegisteredUser);
+
+const updatedGuestUser = updateUserProfile(guestUser, {
+  profile: "Should Not Change"
+});
+
+console.log(updatedGuestUser);
